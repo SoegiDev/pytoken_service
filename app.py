@@ -88,7 +88,7 @@ def validate():
         return jsonify({
             "id":jwt_decoded["id"]
         }), 200
-    except Exception:
+    except ZeroDivisionError:
         initcheck = False
         initcheck = check_key(dict_access,public_id,1)
         if initcheck:
@@ -115,7 +115,7 @@ def validate_refresh():
                 "token":token,
                 "token_refresh":refresh
             }), 200
-    except Exception:
+    except ZeroDivisionError:
         initcheck = False
         initcheck = check_key(dict_access,public_id,1)
         if initcheck:
