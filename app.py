@@ -6,10 +6,18 @@ import socket
 from flask import Flask, request, jsonify
 import jwt
 from JSONExceptionHandler import JSONExceptionHandler
-
 app = Flask(__name__)
 HOST = "0.0.0.0"
 PORT = 5003
+if os.environ.get('FLASK_ENV') == 'dev':
+    # app.logger.info(os.environ.get('FLASK_ENV'))
+    app.config.from_object('config.Development')
+elif os.environ.get('FLASK_ENV') == 'testing':
+    # app.logger.info(os.environ.get('FLASK_ENV'))
+    app.config.from_object('config.Testing')
+else:
+    # app.logger.info(os.environ.get('FLASK_ENV'))
+    app.config.from_object('config.Production')
 secret_key = app.config.get('SECRET_KEY')
 secret_key_refresh = app.config.get('SECRET_KEY_REFRESH')
 expire_token = app.config.get('JWT_ACCESS_TOKEN_EXPIRES')
