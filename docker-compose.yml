@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./token:/app
+      - .:/app
     ports:
       - 5003:5003
     networks:
