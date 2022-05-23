@@ -140,7 +140,7 @@ def check_key(dictionary,public_id,typ = 0):
     Returns:
         _type_: _description_
     """
-    if public_id in dict.keys():
+    if public_id in dictionary.keys():
         if dictionary.get(id) > 2 :
             print(dict_access.get(id))
             return False
