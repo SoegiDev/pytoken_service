@@ -9,7 +9,7 @@ from JSONExceptionHandler import JSONExceptionHandler
 app = Flask(__name__)
 HOST = "0.0.0.0"
 PORT = 5003
-if os.environ.get('FLASK_ENV') == 'dev':
+if os.environ.get('FLASK_ENV') == 'development':
     # app.logger.info(os.environ.get('FLASK_ENV'))
     app.config.from_object('config.Development')
 elif os.environ.get('FLASK_ENV') == 'testing':
