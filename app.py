@@ -10,14 +10,16 @@ app = Flask(__name__)
 HOST = "0.0.0.0"
 PORT = 5003
 if os.environ.get('FLASK_ENV') == 'development':
-    # app.logger.info(os.environ.get('FLASK_ENV'))
     app.config.from_object('config.Development')
+    print("Development")
 elif os.environ.get('FLASK_ENV') == 'testing':
     # app.logger.info(os.environ.get('FLASK_ENV'))
     app.config.from_object('config.Testing')
+    print("Testing")
 else:
     # app.logger.info(os.environ.get('FLASK_ENV'))
     app.config.from_object('config.Production')
+    print("Production")
 secret_key = app.config.get('SECRET_KEY')
 secret_key_refresh = app.config.get('SECRET_KEY_REFRESH')
 expire_token = app.config.get('JWT_ACCESS_TOKEN_EXPIRES')
